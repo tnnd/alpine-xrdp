@@ -2,7 +2,7 @@ FROM danielguerra/alpine-sshdx:3.4
 
 
 ADD apk /tmp/apk
-RUN cp /tmp/apk/.abuild/-57cfc5fa.rsa.pub /etc/apk/keys
+RUN cp /tmp/apk/.abuild/-58b7ee0c.rsa.pub /etc/apk/keys
 
 RUN apk --update --no-cache add xrdp xvfb alpine-desktop xfce4 thunar-volman openssh \
 faenza-icon-theme slim xf86-input-synaptics xf86-input-mouse xf86-input-keyboard \
