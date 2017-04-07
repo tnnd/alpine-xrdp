@@ -1,20 +1,18 @@
-FROM danielguerra/alpine-sshdx:3.4
+FROM danielguerra/alpine-sshdx:3.5
 
 
 ADD apk /tmp/apk
-RUN cp /tmp/apk/.abuild/-58b7ee0c.rsa.pub /etc/apk/keys
+RUN cp /tmp/apk/.abuild/-58b83ac3.rsa.pub /etc/apk/keys
 
-RUN apk --update --no-cache add xrdp xvfb alpine-desktop xfce4 thunar-volman openssh \
+RUN apk --update --no-cache add xrdp xvfb alpine-desktop xfce4 thunar-volman openssh tor \
 faenza-icon-theme slim xf86-input-synaptics xf86-input-mouse xf86-input-keyboard \
 setxkbmap sudo util-linux dbus wireshark ttf-freefont xauth supervisor py-pip git \
 docker docker-registry
-RUN apk add /tmp/apk/ossp-uuid-1.6.2-r0.apk \
-&& apk add /tmp/apk/ossp-uuid-dev-1.6.2-r0.apk \
-&& apk add /tmp/apk/x11vnc-0.9.13-r0.apk \
+RUN apk add /tmp/apk/x11vnc-0.9.13-r0.apk \
 && rm -rf /tmp/* /var/cache/apk/*
 
-ENV DOCKER_COMPOSE_VERSION 1.8.0
-ENV COMPOSE_API_VERSION=1.18
+ENV DOCKER_COMPOSE_VERSION 1.11.2
+ENV COMPOSE_API_VERSION=1.22
 
 RUN pip install --upgrade pip &&\
     pip install -U docker-compose==${DOCKER_COMPOSE_VERSION} &&\
