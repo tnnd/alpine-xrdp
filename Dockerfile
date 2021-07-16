@@ -1,12 +1,12 @@
-FROM alpine:3.9
+FROM alpine:3.12
 
 RUN apk --update --no-cache add xrdp xvfb xfce4 openssh x11vnc dbus util-linux bash \
-	faenza-icon-theme slim xauth xf86-input-synaptics ttf-freefont sudo supervisor
+	faenza-icon-theme slim xauth xf86-input-synaptics sudo supervisor firefox-esr xterm
 RUN rm -rf /tmp/* /var/cache/apk/*
 
 ADD etc /etc
 
-RUN xrdp-keygen xrdp auto
+# RUN xrdp-keygen xrdp auto
 RUN sed -i '/TerminalServerUsers/d' /etc/xrdp/sesman.ini \
 && sed -i '/TerminalServerAdmins/d' /etc/xrdp/sesman.ini
 
